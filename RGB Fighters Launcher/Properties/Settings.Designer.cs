@@ -26,21 +26,21 @@ namespace RGB_Fighters_Launcher.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://rgbfighters.videogamezone.eu")]
-        public string launcherUrl {
+        public string clientUrl {
             get {
-                return ((string)(this["launcherUrl"]));
+                return ((string)(this["clientUrl"]));
             }
             set {
-                this["launcherUrl"] = value;
+                this["clientUrl"] = value;
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("RGBFighters.7z")]
-        public string launcherZip {
+        public string clientZip {
             get {
-                return ((string)(this["launcherZip"]));
+                return ((string)(this["clientZip"]));
             }
         }
         
@@ -71,6 +71,42 @@ namespace RGB_Fighters_Launcher.Properties {
             }
             set {
                 this["unzipperFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Launcher.7z")]
+        public string launcherZip {
+            get {
+                return ((string)(this["launcherZip"]));
+            }
+            set {
+                this["launcherZip"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("AutoUpdater.exe")]
+        public string autoUpdater {
+            get {
+                return ((string)(this["autoUpdater"]));
+            }
+            set {
+                this["autoUpdater"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("launcher.exe")]
+        public string launcher {
+            get {
+                return ((string)(this["launcher"]));
+            }
+            set {
+                this["launcher"] = value;
             }
         }
     }

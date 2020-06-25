@@ -5,7 +5,7 @@ using System.Windows;
 
 namespace RGB_Fighters_Launcher
 {
-    class _7Zip
+    public class _7Zip
     {
         public static void Extract(string sourceArchive, string destination)
         {
@@ -20,7 +20,7 @@ namespace RGB_Fighters_Launcher
                 {
                     WindowStyle = ProcessWindowStyle.Hidden,
                     FileName = Settings.Default.unzipperFile,
-                    Arguments = $"x \"{sourceArchive}\" -y -o\"{destination}\""
+                    Arguments = $"x \"{sourceArchive}\" -aoa -o\"{destination}\""
                 };
 
                 Process x = Process.Start(pro);

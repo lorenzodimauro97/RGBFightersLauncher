@@ -17,7 +17,7 @@ namespace RGB_Fighters_Launcher
 
         public bool CompareHash()
         {
-            return DownloadedHash.Contains(CalculateMD5(Settings.Default.launcherZip));
+            return DownloadedHash.Contains(CalculateMD5(Settings.Default.clientZip));
         }
 
         public void Download(DownloadStringCompletedEventHandler handler) 
@@ -46,6 +46,8 @@ namespace RGB_Fighters_Launcher
 
         public static string CalculateMD5(string filename)
         {
+            if (!File.CheckIfExists(filename)) return "error";
+
             using (var md5 = System.Security.Cryptography.MD5.Create())
             {
                 using (var stream = System.IO.File.OpenRead(filename))
