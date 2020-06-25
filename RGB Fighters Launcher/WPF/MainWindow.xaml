@@ -11,7 +11,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RGB_Fighters_Launcher"
         mc:Ignorable="d"
-        Title="RGB Fighters Launcher" Height="450" Width="800" ResizeMode="NoResize">
+        Title="RGB Fighters Launcher" Height="450" Width="800" ResizeMode="NoResize" Visibility="Visible">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="91*"/>
@@ -25,7 +25,7 @@
             <materialDesign:PackIcon Kind="DotsVertical" Width="32" Height="32" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Button>
         <Label x:Name="ProgressLabel" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="449,221,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Roboto" Background="{x:Null}" Foreground="#DDFFFFFF" Height="50" Width="244"/>
-        <ProgressBar x:Name="LauncherProgressBar" Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="449,369,0,0" VerticalAlignment="Top" Width="244" Visibility="Hidden"/>
+        <ProgressBar x:Name="LauncherProgressBar" Grid.Column="1" HorizontalAlignment="Right" Height="20" Margin="0,370,20,0" VerticalAlignment="Top" Width="226" Visibility="Hidden"/>
         <TextBlock x:Name="ChangelogBox" HorizontalAlignment="Left" Margin="20,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="180" Grid.ColumnSpan="2" Width="220" Foreground="#DDFFFFFF"/>
 
     </Grid>

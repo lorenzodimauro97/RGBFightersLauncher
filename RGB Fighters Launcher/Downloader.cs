@@ -1,5 +1,6 @@
 ﻿using RGB_Fighters_Launcher.Properties;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net;
 using System.Windows;
@@ -24,7 +25,7 @@ namespace RGB_Fighters_Launcher
             this.downloadBar = downloadBar;
         }
 
-        public void DownloadString(DownloadStringCompletedEventHandler handler)
+        public void DownloadString(List<DownloadStringCompletedEventHandler> handler)
         {
             UpdateProgress($"Downloading {Settings.Default.launcherUrl}/{FileName}");
 
@@ -47,24 +48,27 @@ namespace RGB_Fighters_Launcher
             client.DownloadFileAsync(new Uri($"{Settings.Default.launcherUrl}/{FileName}"), Settings.Default.launcherZip);
         }
 
-        private void SetupStringAsync(DownloadStringCompletedEventHandler handler)
+        private void SetupStringAsync(List<DownloadStringCompletedEventHandler> handler)
         {
             client = new WebClient();
             client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(UpdateDownloadProgress);
-            client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(ClearClient) + handler;
+
+            foreach (var h in handler) client.DownloadStringCompleted += h;
+
+            client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(ClearClient);
         }
 
         private void SetupFileAsync(AsyncCompletedEventHandler handler)
         {
             client = new WebClient();
             client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(UpdateDownloadProgress);
-            client.DownloadFileCompleted += handler + new AsyncCompletedEventHandler(ClearClient);
+            client.DownloadFileCompleted += new AsyncCompletedEventHandler(ClearClient) + handler;
         }
 
         public void UpdateDownloadProgress(object sender, DownloadProgressChangedEventArgs e)
         {
-            if(downloadBar != null)
-            downloadBar.Value = e.ProgressPercentage;
+            if (downloadBar != null)
+                downloadBar.Value = e.ProgressPercentage;
         }
 
         public void ClearClient(object sender, AsyncCompletedEventArgs e)
@@ -76,11 +80,12 @@ namespace RGB_Fighters_Launcher
 
         public void ChangeDownloadBarVisibility(Visibility visibility)
         {
-            if(downloadBar != null)
-            downloadBar.Visibility = visibility;
+            if (downloadBar != null)
+                downloadBar.Visibility = visibility;
         }
 
-        public void UpdateProgress(string message) {
+        public void UpdateProgress(string message)
+        {
             if (progressLabel != null)
                 progressLabel.Content = message;
         }

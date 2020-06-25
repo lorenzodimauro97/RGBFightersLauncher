@@ -1,5 +1,6 @@
 ﻿using RGB_Fighters_Launcher.Properties;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Windows;
 
@@ -12,7 +13,6 @@ namespace RGB_Fighters_Launcher
         public Hash()
         {
             DownloadedHash = string.Empty;
-            Download();
         }
 
         public bool CompareHash()
@@ -20,9 +20,9 @@ namespace RGB_Fighters_Launcher
             return DownloadedHash.Contains(CalculateMD5(Settings.Default.launcherZip));
         }
 
-        private void Download() {
+        public void Download(DownloadStringCompletedEventHandler handler) {
             Downloader client = new Downloader("hash", null, null);
-            client.DownloadString(new DownloadStringCompletedEventHandler(SetHash));
+            client.DownloadString(new List<DownloadStringCompletedEventHandler>() { new DownloadStringCompletedEventHandler(SetHash), handler});
         }
 
         private void SetHash(object sender, DownloadStringCompletedEventArgs e)
@@ -36,6 +36,11 @@ namespace RGB_Fighters_Launcher
                 MessageBox.Show("Errore! Impossibile verificare hash! " + ex.InnerException.Message);
                 Application.Current.Shutdown();
             }
+        }
+
+        public bool CheckIfPresent()
+        {
+            return DownloadedHash != string.Empty;
         }
 
         public static string CalculateMD5(string filename)

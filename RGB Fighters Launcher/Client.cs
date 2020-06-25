@@ -1,8 +1,10 @@
 ﻿using RGB_Fighters_Launcher.Properties;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -22,6 +24,7 @@ namespace RGB_Fighters_Launcher
             this.downloadBar = downloadBar;
 
             hash = new Hash();
+            hash.Download(new DownloadStringCompletedEventHandler(CheckHash));
         }
 
         public void Start()
@@ -33,7 +36,7 @@ namespace RGB_Fighters_Launcher
                 return;
             }
 
-            CheckHash();
+            CheckHash(null, null);
         }
 
         private void Download()
@@ -42,8 +45,9 @@ namespace RGB_Fighters_Launcher
             client.DownloadFile(new AsyncCompletedEventHandler(Extract));
         }
 
-        private void CheckHash()
+        private void CheckHash(object sender, DownloadStringCompletedEventArgs e)
         {
+            if (!hash.CheckIfPresent()) return;
             progressLabel.Content = "Comparing hashes...";
             bool hashResult = hash.CompareHash();
 

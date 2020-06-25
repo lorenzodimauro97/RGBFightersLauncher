@@ -1,5 +1,6 @@
 ﻿using RGB_Fighters_Launcher.Properties;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net;
 using System.Windows.Controls;
@@ -21,7 +22,7 @@ namespace RGB_Fighters_Launcher
         private void Download()
         {
             Downloader client = new Downloader("changelog", null, null);
-            client.DownloadString(new DownloadStringCompletedEventHandler(SetContent));
+            client.DownloadString(new List<DownloadStringCompletedEventHandler>() { new DownloadStringCompletedEventHandler(SetContent) });
         }
 
         private void SetContent(object sender, DownloadStringCompletedEventArgs e){

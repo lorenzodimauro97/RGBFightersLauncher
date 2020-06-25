@@ -1,11 +1,4 @@
-﻿using RGB_Fighters_Launcher.Properties;
-using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Net;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 
 namespace RGB_Fighters_Launcher
 {
@@ -24,11 +17,11 @@ namespace RGB_Fighters_Launcher
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             SetWindowButtons(false);
-            CheckClientUpdates(@"client.7z");
+            StartClient();
             return;
         }
 
-        public void CheckClientUpdates(string clientName)
+        public void StartClient()
         {
             Client client = new Client(ProgressLabel, LauncherProgressBar);
             client.Start();
