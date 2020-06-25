@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -52,10 +53,10 @@ namespace RGB_Fighters_Launcher
             }
         }
 
-        private void Extract(object sender, AsyncCompletedEventArgs e)
+        private async void Extract(object sender, AsyncCompletedEventArgs e)
         {
             progressLabel.Content = "Extracting update...";
-            _7Zip.Extract(Settings.Default.clientZip, Settings.Default.clientFolderName);
+            await Task.Run(() => _7Zip.Extract(Settings.Default.clientZip, Settings.Default.clientFolderName));
             Start();
         }
 

@@ -184,6 +184,6 @@
   </Target>
   <PropertyGroup>
     <PreBuildEvent>xcopy /s /y "$(SolutionDir)7zipBinaries" "$(TargetDir)"
-copy /y "$(SolutionDir)\AutoUpdater\bin\Debug\autoupdater.exe" "$(TargetDir)autoupdater.exe"</PreBuildEvent>
+copy /y "$(SolutionDir)\AutoUpdater\bin\Release\AutoUpdater.exe" "$(TargetDir)autoupdater.exe"</PreBuildEvent>
   </PropertyGroup>
 </Project>
