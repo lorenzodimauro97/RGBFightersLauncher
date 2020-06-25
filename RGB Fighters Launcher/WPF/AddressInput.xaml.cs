@@ -14,12 +14,12 @@ namespace RGB_Fighters_Launcher
         {
             InitializeComponent();
             this.window = window;
-            AddressBox.Text = Settings.Default.launcherUrl;
+            AddressBox.Text = Settings.Default.clientUrl;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Settings.Default.launcherUrl = AddressBox.Text;
+            Settings.Default.clientUrl = AddressBox.Text;
             Settings.Default.Save();
             this.Close();
         }

@@ -27,13 +27,13 @@ namespace RGB_Fighters_Launcher
 
         public void DownloadString(List<DownloadStringCompletedEventHandler> handler)
         {
-            UpdateProgress($"Downloading {Settings.Default.launcherUrl}/{FileName}");
+            UpdateProgress($"Downloading {Settings.Default.clientUrl}/{FileName}");
 
             SetupStringAsync(handler);
 
             ChangeDownloadBarVisibility(Visibility.Visible);
 
-            client.DownloadStringAsync(new Uri($"{Settings.Default.launcherUrl}/{FileName}"));
+            client.DownloadStringAsync(new Uri($"{Settings.Default.clientUrl}/{FileName}"));
 
         }
 
@@ -45,7 +45,7 @@ namespace RGB_Fighters_Launcher
 
             ChangeDownloadBarVisibility(Visibility.Visible);
 
-            client.DownloadFileAsync(new Uri($"{Settings.Default.launcherUrl}/{FileName}"), Settings.Default.launcherZip);
+            client.DownloadFileAsync(new Uri($"{Settings.Default.clientUrl}/{FileName}"), FileName);
         }
 
         private void SetupStringAsync(List<DownloadStringCompletedEventHandler> handler)

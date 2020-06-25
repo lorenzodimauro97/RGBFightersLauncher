@@ -11,6 +11,8 @@ namespace RGB_Fighters_Launcher
         public MainWindow()
         {
             InitializeComponent();
+            Launcher launcher = new Launcher();
+            launcher.CheckUpdates();
             _ = new ChangeLog(ChangelogBox);  //Inizializziamo il changelog
         }
 

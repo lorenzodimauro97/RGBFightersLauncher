@@ -29,18 +29,13 @@ namespace RGB_Fighters_Launcher
         public void Start()
         {
             progressLabel.Content = "Checking content...";
-            if (!File.CheckIfDirectoryExists(Settings.Default.clientFolderName) || !File.CheckIfExists(Settings.Default.launcherZip)) {
-                PreClear();
-                Download();
-                return;
-            }
 
-            CheckHash(null, null);
+            if(hash.CheckIfPresent()) CheckHash(null, null);
         }
 
         private void Download()
         {
-            var client = new Downloader(Settings.Default.launcherZip, progressLabel, downloadBar);
+            var client = new Downloader(Settings.Default.clientZip, progressLabel, downloadBar);
             client.DownloadFile(new AsyncCompletedEventHandler(Extract));
         }
 
@@ -48,9 +43,8 @@ namespace RGB_Fighters_Launcher
         {
             if (!hash.CheckIfPresent()) return;
             progressLabel.Content = "Comparing hashes...";
-            bool hashResult = hash.CompareHash();
 
-            if (hashResult) StartGame();
+            if (hash.CompareHash()) StartGame();
             else
             {
                 MessageBox.Show("Nuovo aggiornamento disponibile!");
@@ -61,7 +55,7 @@ namespace RGB_Fighters_Launcher
         private void Extract(object sender, AsyncCompletedEventArgs e)
         {
             progressLabel.Content = "Extracting update...";
-            _7Zip.Extract(Settings.Default.launcherZip, Settings.Default.clientFolderName);
+            _7Zip.Extract(Settings.Default.clientZip, Settings.Default.clientFolderName);
             Start();
         }
 
@@ -74,21 +68,6 @@ namespace RGB_Fighters_Launcher
                 return;
             }
             Application.Current.Shutdown();
-        }
-
-        public static (bool, string) PreClear()
-        {
-            if (!Directory.Exists("Client")) return (true, "");
-
-            try { Directory.Delete("Client", true); }
-
-            catch (IOException ex)
-            {
-                return (false, $"Errore! {ex.Message}, chiudere il gioco!");
-            }
-
-            return (true, "");
-
         }
     }
 }
