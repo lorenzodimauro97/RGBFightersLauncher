@@ -23,7 +23,6 @@ namespace RGB_Fighters_Launcher
             this.downloadBar = downloadBar;
 
             hash = new Hash();
-            hash.Download(new DownloadStringCompletedEventHandler(CheckHash));
         }
 
         public void Start()
@@ -35,7 +34,7 @@ namespace RGB_Fighters_Launcher
                 return;
             }
 
-            CheckHash(null, null);
+            hash.Download(new DownloadStringCompletedEventHandler(CheckHash));
         }
 
         private void Download()
