@@ -25,7 +25,7 @@ namespace AutoUpdater.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("launcher.7z")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Launcher.7z")]
         public string launcherZip {
             get {
                 return ((string)(this["launcherZip"]));
@@ -41,6 +41,18 @@ namespace AutoUpdater.Properties {
             }
             set {
                 this["unzipperFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Launcher.exe")]
+        public string launcherFile {
+            get {
+                return ((string)(this["launcherFile"]));
+            }
+            set {
+                this["launcherFile"] = value;
             }
         }
     }

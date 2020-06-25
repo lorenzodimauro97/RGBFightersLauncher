@@ -3,10 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="launcherZip" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">launcher.7z</Value>
+      <Value Profile="(Default)">Launcher.7z</Value>
     </Setting>
     <Setting Name="unzipperFile" Type="System.String" Scope="User">
       <Value Profile="(Default)">7za.exe</Value>
+    </Setting>
+    <Setting Name="launcherFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Launcher.exe</Value>
     </Setting>
   </Settings>
 </SettingsFile>

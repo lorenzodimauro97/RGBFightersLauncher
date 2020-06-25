@@ -7,15 +7,15 @@ namespace AutoUpdater
 {
     public class _7Zip
     {
-        public static void Extract(string sourceArchive, string destination)
+        public static void Extract(string sourceArchive)
         {
             try
             {
                 ProcessStartInfo pro = new ProcessStartInfo
                 {
-                    WindowStyle = ProcessWindowStyle.Hidden,
+                    WindowStyle = ProcessWindowStyle.Normal,
                     FileName = Settings.Default.unzipperFile,
-                    Arguments = $"x \"{sourceArchive}\" -aoa -o\"{destination}\""
+                    Arguments = $"e \"{sourceArchive}\" -aoa"
                 };
 
                 Process x = Process.Start(pro);

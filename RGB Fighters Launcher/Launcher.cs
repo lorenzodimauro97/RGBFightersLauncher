@@ -50,7 +50,6 @@ namespace RGB_Fighters_Launcher
 
         private bool CompareHash()
         {
-            MessageBox.Show(downloadedLauncherHash + " " + Hash.CalculateMD5(Settings.Default.launcher));
             return downloadedLauncherHash.Contains(Hash.CalculateMD5(Settings.Default.launcher));
         }
 
@@ -58,9 +57,14 @@ namespace RGB_Fighters_Launcher
         {
             try
             {
-               Process.Start(Settings.Default.autoUpdater);
-            }
+                ProcessStartInfo pro = new ProcessStartInfo
+                {
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    FileName = Settings.Default.autoUpdater
+                };
 
+                Process x = Process.Start(pro);
+            }
             catch (Exception Ex)
             {
                 MessageBox.Show($"Errore! {Ex.Message}");
