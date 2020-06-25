@@ -14,5 +14,8 @@
     <Setting Name="gamePath" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Client\RGB Fighters.exe</Value>
     </Setting>
+    <Setting Name="unzipperFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">7za.exe</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

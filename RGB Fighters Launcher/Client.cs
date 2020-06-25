@@ -1,6 +1,5 @@
 ﻿using RGB_Fighters_Launcher.Properties;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;

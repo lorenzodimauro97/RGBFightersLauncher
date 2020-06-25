@@ -61,5 +61,17 @@ namespace RGB_Fighters_Launcher.Properties {
                 return ((string)(this["gamePath"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7za.exe")]
+        public string unzipperFile {
+            get {
+                return ((string)(this["unzipperFile"]));
+            }
+            set {
+                this["unzipperFile"] = value;
+            }
+        }
     }
 }

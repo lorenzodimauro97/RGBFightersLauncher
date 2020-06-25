@@ -20,7 +20,8 @@ namespace RGB_Fighters_Launcher
             return DownloadedHash.Contains(CalculateMD5(Settings.Default.launcherZip));
         }
 
-        public void Download(DownloadStringCompletedEventHandler handler) {
+        public void Download(DownloadStringCompletedEventHandler handler) 
+        {
             Downloader client = new Downloader("hash", null, null);
             client.DownloadString(new List<DownloadStringCompletedEventHandler>() { new DownloadStringCompletedEventHandler(SetHash), handler});
         }

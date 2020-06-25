@@ -1,22 +1,25 @@
-﻿using System;
+﻿using RGB_Fighters_Launcher.Properties;
+using System;
 using System.Diagnostics;
+using System.Windows;
 
 namespace RGB_Fighters_Launcher
 {
     class _7Zip
     {
-        public static (bool, string) Extract(string sourceArchive, string destination)
+        public static void Extract(string sourceArchive, string destination)
         {
-            if (!File.CheckIfExists(sourceArchive)) return (false, "Errore! la cartella compressa è inesistente!");
-
-            string zPath = "7za.exe"; //add to proj and set CopyToOuputDir
+            if (!File.CheckIfExists(sourceArchive)) {
+                MessageBox.Show("Are you trying to extract something that doesn't exist?");
+                Application.Current.Shutdown();
+            }
 
             try
             {
                 ProcessStartInfo pro = new ProcessStartInfo
                 {
                     WindowStyle = ProcessWindowStyle.Hidden,
-                    FileName = zPath,
+                    FileName = Settings.Default.unzipperFile,
                     Arguments = $"x \"{sourceArchive}\" -y -o\"{destination}\""
                 };
 
@@ -25,9 +28,9 @@ namespace RGB_Fighters_Launcher
             }
             catch (Exception Ex)
             {
-                return (false, $"Errore! {Ex.Message}");
+                MessageBox.Show($"Errore! {Ex.Message}");
+                Application.Current.Shutdown();
             }
-            return (true, "");
         }
     }
 
