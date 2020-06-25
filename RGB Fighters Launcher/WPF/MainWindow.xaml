@@ -17,16 +17,16 @@
             <ColumnDefinition Width="91*"/>
             <ColumnDefinition Width="701*"/>
         </Grid.ColumnDefinitions>
-        <Image HorizontalAlignment="Left" VerticalAlignment="Top" Height="421" Width="794" Source="Screen.png" Stretch="Fill" Grid.ColumnSpan="2"/>
+        <Image HorizontalAlignment="Left" VerticalAlignment="Top" Height="421" Width="794" Source="Background.png" Stretch="Fill" Grid.ColumnSpan="2"/>
         <Button x:Name="PlayButton" Style="{DynamicResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" Margin="500,300,0,0" VerticalAlignment="Top" Width="48" Height="48" Click="Button_Click" Grid.Column="1">
             <materialDesign:PackIcon Kind="Play" Width="32" Height="32"/>
         </Button>
         <Button x:Name="SettingsButton" Style="{DynamicResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="32" Height="32" Click="UpdateAddress" Grid.Column="1">
             <materialDesign:PackIcon Kind="DotsVertical" Width="32" Height="32" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Button>
-        <Label x:Name="ProgressLabel" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="449,248,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Roboto"/>
-        <ProgressBar x:Name="LauncherProgressBar" Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="449,369,0,0" VerticalAlignment="Top" Width="170" Visibility="Hidden"/>
-        <TextBlock x:Name="ChangelogBox" HorizontalAlignment="Left" Margin="20,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="180" Grid.ColumnSpan="2" Width="220"/>
+        <Label x:Name="ProgressLabel" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="449,221,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Roboto" Background="{x:Null}" Foreground="#DDFFFFFF" Height="50" Width="244"/>
+        <ProgressBar x:Name="LauncherProgressBar" Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="449,369,0,0" VerticalAlignment="Top" Width="244" Visibility="Hidden"/>
+        <TextBlock x:Name="ChangelogBox" HorizontalAlignment="Left" Margin="20,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="180" Grid.ColumnSpan="2" Width="220" Foreground="#DDFFFFFF"/>
 
     </Grid>
 </Window>

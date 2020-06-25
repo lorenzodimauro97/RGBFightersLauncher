@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RGB_Fighters_Launcher.Properties;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace RGB_Fighters_Launcher
 {
@@ -25,12 +14,13 @@ namespace RGB_Fighters_Launcher
         {
             InitializeComponent();
             this.window = window;
-            AddressBox.Text = this.window.address;
+            AddressBox.Text = Settings.Default.launcherUrl;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            window.address = AddressBox.Text;
+            Settings.Default.launcherUrl = AddressBox.Text;
+            Settings.Default.Save();
             this.Close();
         }
     }

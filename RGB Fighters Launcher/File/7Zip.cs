@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RGB_Fighters_Launcher
 {
@@ -29,7 +25,7 @@ namespace RGB_Fighters_Launcher
             }
             catch (Exception Ex)
             {
-                return(false, $"Errore! {Ex.Message}");
+                return (false, $"Errore! {Ex.Message}");
             }
             return (true, "");
         }

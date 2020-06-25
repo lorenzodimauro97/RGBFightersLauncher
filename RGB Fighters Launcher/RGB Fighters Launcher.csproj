@@ -103,6 +103,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Downloader.cs" />
     <Compile Include="File\7Zip.cs" />
     <Compile Include="WPF\AddressInput.xaml.cs">
       <DependentUpon>AddressInput.xaml</DependentUpon>
@@ -120,7 +121,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="File\MD5.cs" />
+    <Compile Include="File\Hash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -164,6 +165,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="RGB.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WPF\Background.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using RGB_Fighters_Launcher.Properties;
+using System;
+using System.ComponentModel;
 using System.Net;
-using System.Windows;
+using System.Windows.Controls;
 
 namespace RGB_Fighters_Launcher
 {
@@ -8,24 +10,32 @@ namespace RGB_Fighters_Launcher
     {
         public string Content { get; private set; }
 
-        private readonly string address;
+        public TextBlock textBlock;
 
-        public ChangeLog(string address)
+        public ChangeLog(TextBlock textBlock)
         {
-            this.address = address;
+            this.textBlock = textBlock;
             Download();
         }
 
         private void Download()
         {
-            WebClient client = new WebClient();
+            Downloader client = new Downloader("changelog", null, null);
+            client.DownloadString(new DownloadStringCompletedEventHandler(SetContent));
+        }
 
-            try { Content = client.DownloadString($"{address}/changelog"); }
+        private void SetContent(object sender, DownloadStringCompletedEventArgs e){
 
+            try
+            {
+                Content = e.Result;
+            }
             catch(Exception ex)
             {
-                Content = ex.Message;
+                Content = ex.InnerException.Message;
             }
+
+                textBlock.Text = Content;
         }
 
     }
