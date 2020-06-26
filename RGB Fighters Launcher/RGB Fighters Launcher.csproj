@@ -29,7 +29,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -172,8 +172,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>call "$(TargetDir)Scripts\Make7Zip.bat"
+call "$(TargetDir)Scripts\MakeHash.bat"
+call "$(TargetDir)Scripts\FTP.bat"</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\MaterialDesignThemes.3.2.0-ci1494\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0-ci1494\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -184,6 +185,6 @@
   </Target>
   <PropertyGroup>
     <PreBuildEvent>xcopy /s /y "$(SolutionDir)7zipBinaries" "$(TargetDir)"
-copy /y "$(SolutionDir)\AutoUpdater\bin\Release\AutoUpdater.exe" "$(TargetDir)autoupdater.exe"</PreBuildEvent>
+copy /y "$(SolutionDir)\AutoUpdater\bin\Release\AutoUpdater.exe" "$(TargetDir)AutoUpdater.exe"</PreBuildEvent>
   </PropertyGroup>
 </Project>
