@@ -17,7 +17,7 @@
             <ColumnDefinition Width="91*"/>
             <ColumnDefinition Width="701*"/>
         </Grid.ColumnDefinitions>
-        <Image HorizontalAlignment="Left" VerticalAlignment="Top" Height="421" Width="794" Source="Background.png" Stretch="Fill" Grid.ColumnSpan="2"/>
+        <Image HorizontalAlignment="Left" VerticalAlignment="Top" Height="421" Source="Background.png" Stretch="Fill" Grid.ColumnSpan="2"/>
         <Button x:Name="PlayButton" Style="{DynamicResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" Margin="500,300,0,0" VerticalAlignment="Top" Width="48" Height="48" Click="Button_Click" Grid.Column="1">
             <materialDesign:PackIcon Kind="Play" Width="32" Height="32"/>
         </Button>
@@ -27,7 +27,8 @@
         <Label x:Name="ProgressLabel" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="449,221,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Roboto" Background="{x:Null}" Foreground="#DDFFFFFF" Height="50" Width="244"/>
         <ProgressBar x:Name="LauncherProgressBar" Grid.Column="1" HorizontalAlignment="Right" Height="20" Margin="0,370,20,0" VerticalAlignment="Top" Width="226" Visibility="Hidden"/>
         <Rectangle Fill="#FF666666" HorizontalAlignment="Left" Height="391" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="250" Grid.ColumnSpan="2" Opacity="0.5"/>
-        <TextBlock x:Name="ChangelogBox" HorizontalAlignment="Left" Margin="20,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="370" Grid.ColumnSpan="2" Width="230" Foreground="#DDFFFFFF"/>
-
+        <ScrollViewer Grid.ColumnSpan="2" Margin="0,11,507,11">
+            <TextBlock x:Name="ChangelogBox" HorizontalAlignment="Left" Margin="20,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2" Foreground="#DDFFFFFF"/>
+        </ScrollViewer>
     </Grid>
 </Window>
